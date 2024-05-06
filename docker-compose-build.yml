@@ -35,6 +35,8 @@ services:
 
 # T-Pot Init Service
   tpotinit:
+    build:
+        context: ./docker/tpotinit
     container_name: tpotinit
     env_file:
       - .env
@@ -46,7 +48,6 @@ services:
     network_mode: "host"
     cap_add:
      - NET_ADMIN
-    image: ${TPOT_REPO}/tpotinit:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
     volumes:
       - ${TPOT_DOCKER_COMPOSE}:/tmp/tpot/docker-compose.yml:ro
@@ -61,6 +62,8 @@ services:
 
 # Adbhoney service
   adbhoney:
+    build:
+      context: ./docker/adbhoney
     container_name: adbhoney
     restart: always
     depends_on:
@@ -70,7 +73,6 @@ services:
      - adbhoney_local
     ports:
      - "5555:5555"
-    image: ${TPOT_REPO}/adbhoney:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
     read_only: true
     volumes:
@@ -79,6 +81,8 @@ services:
 
 # Ciscoasa service
   ciscoasa:
+    build:
+      context: ./docker/ciscoasa
     container_name: ciscoasa
     restart: always
     depends_on:
@@ -455,21 +459,21 @@ services:
      - ${TPOT_DATA_PATH}/medpot/log/:/var/log/medpot
 
 # Redishoneypot service
-  # redishoneypot:
-  #   container_name: redishoneypot
-  #   restart: always
-  #   depends_on:
-  #     tpotinit:
-  #       condition: service_healthy
-  #   networks:
-  #    - redishoneypot_local
-  #   ports:
-  #    - "6379:6379"
-  #   image: ${TPOT_REPO}/redishoneypot:${TPOT_VERSION}
-  #   pull_policy: ${TPOT_PULL_POLICY}
-  #   read_only: true
-  #   volumes:
-  #    - ${TPOT_DATA_PATH}/redishoneypot/log:/var/log/redishoneypot
+  redishoneypot:
+    container_name: redishoneypot
+    restart: always
+    depends_on:
+      tpotinit:
+        condition: service_healthy
+    networks:
+     - redishoneypot_local
+    ports:
+     - "6379:6379"
+    image: ${TPOT_REPO}/redishoneypot:${TPOT_VERSION}
+    pull_policy: ${TPOT_PULL_POLICY}
+    read_only: true
+    volumes:
+     - ${TPOT_DATA_PATH}/redishoneypot/log:/var/log/redishoneypot
 
 # SentryPeer service
   sentrypeer:
@@ -655,6 +659,8 @@ services:
 #### ELK
 ## Elasticsearch service
   elasticsearch:
+    build:
+      context: ./docker/elk/elasticsearch
     container_name: elasticsearch
     restart: always
     depends_on:
@@ -662,7 +668,7 @@ services:
         condition: service_healthy
     environment:
      - bootstrap.memory_lock=true
-     - ES_JAVA_OPTS=-Xms4g -Xmx4g
+     - ES_JAVA_OPTS=-Xms2048m -Xmx2048m
      - ES_TMPDIR=/tmp
     cap_add:
      - IPC_LOCK
@@ -676,13 +682,14 @@ services:
     mem_limit: 4g
     ports:
      - "127.0.0.1:64298:9200"
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
     pull_policy: ${TPOT_PULL_POLICY}
     volumes:
-     - ${TPOT_DATA_PATH}:/usr/share/elasticsearch/data
+     - ${TPOT_DATA_PATH}:/data
 
 ## Kibana service
   kibana:
+    build:
+      context: ./docker/elk/kibana
     container_name: kibana
     restart: always
     depends_on:
@@ -691,11 +698,12 @@ services:
     mem_limit: 1g
     ports:
      - "127.0.0.1:64296:5601"
-    image: ${TPOT_REPO}/kibana:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
 
 ## Logstash service
   logstash:
+    build:
+      context: ./docker/elk/logstash
     container_name: logstash
     restart: always
     depends_on:
@@ -709,7 +717,6 @@ services:
     ports:
      - "127.0.0.1:64305:64305"
     mem_limit: 2g
-    image: ${TPOT_REPO}/logstash:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
     volumes:
      - ${TPOT_DATA_PATH}:/data
@@ -787,7 +794,7 @@ services:
 # Nginx service
   nginx:
     build:
-        context: ./docker/nginx
+      context: ./docker/nginx
     container_name: nginx
     restart: always
     environment:
@@ -807,11 +814,10 @@ services:
     ports:
      - "64297:64297"
     pull_policy: ${TPOT_PULL_POLICY}
-    read_only: true
     volumes:
-     - ${TPOT_DATA_PATH}/nginx/cert/:/etc/nginx/cert/:ro
-     - ${TPOT_DATA_PATH}/nginx/conf/nginxpasswd:/etc/nginx/nginxpasswd:ro
-     - ${TPOT_DATA_PATH}/nginx/conf/lswebpasswd:/etc/nginx/lswebpasswd:ro
+     - ${TPOT_DATA_PATH}/nginx/cert/:/etc/nginx/cert/
+     - ${TPOT_DATA_PATH}/nginx/conf/nginxpasswd:/etc/nginx/nginxpasswd
+     - ${TPOT_DATA_PATH}/nginx/conf/lswebpasswd:/etc/nginx/lswebpasswd
      - ${TPOT_DATA_PATH}/nginx/log/:/var/log/nginx/
 
 # Spiderfoot service

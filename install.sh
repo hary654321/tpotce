@@ -19,12 +19,12 @@ EOF
 )
 
 # Check if running with root privileges
-if [ ${EUID} -eq 0 ];
-  then
-    echo "This script should not be run as root. Please run it as a regular user."
-    echo
-    exit 1
-fi
+# if [ ${EUID} -eq 0 ];
+#   then
+#     echo "This script should not be run as root. Please run it as a regular user."
+#     echo
+#     exit 1
+# fi
 
 # Check if running on a supported distribution
 mySUPPORTED_DISTRIBUTIONS=("AlmaLinux" "Debian GNU/Linux" "Fedora Linux" "openSUSE Tumbleweed" "Raspbian GNU/Linux" "Rocky Linux" "Ubuntu")

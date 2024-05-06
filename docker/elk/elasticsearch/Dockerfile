@@ -32,6 +32,7 @@ RUN apt-get update -y && \
                                 /etc/elasticsearch && \
     chown -R elasticsearch:elasticsearch /var/lib/elasticsearch \
                                          /var/log/elasticsearch && \
+    chown -R elasticsearch:elasticsearch /data/elk && \
 #
 # Clean up
     apt-get purge aria2 -y && \
