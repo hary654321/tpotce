@@ -455,21 +455,21 @@ services:
      - ${TPOT_DATA_PATH}/medpot/log/:/var/log/medpot
 
 # Redishoneypot service
-  # redishoneypot:
-  #   container_name: redishoneypot
-  #   restart: always
-  #   depends_on:
-  #     tpotinit:
-  #       condition: service_healthy
-  #   networks:
-  #    - redishoneypot_local
-  #   ports:
-  #    - "6379:6379"
-  #   image: ${TPOT_REPO}/redishoneypot:${TPOT_VERSION}
-  #   pull_policy: ${TPOT_PULL_POLICY}
-  #   read_only: true
-  #   volumes:
-  #    - ${TPOT_DATA_PATH}/redishoneypot/log:/var/log/redishoneypot
+  redishoneypot:
+    container_name: redishoneypot
+    restart: always
+    depends_on:
+      tpotinit:
+        condition: service_healthy
+    networks:
+     - redishoneypot_local
+    ports:
+     - "6379:6379"
+    image: ${TPOT_REPO}/redishoneypot:${TPOT_VERSION}
+    pull_policy: ${TPOT_PULL_POLICY}
+    read_only: true
+    volumes:
+     - ${TPOT_DATA_PATH}/redishoneypot/log:/var/log/redishoneypot
 
 # SentryPeer service
   sentrypeer:
