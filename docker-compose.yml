@@ -675,7 +675,7 @@ services:
         hard: 65536
     mem_limit: 4g
     ports:
-     - "127.0.0.1:64298:9200"
+     - "64298:9200"
     image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
     pull_policy: ${TPOT_PULL_POLICY}
     volumes:
@@ -690,7 +690,7 @@ services:
         condition: service_healthy
     mem_limit: 1g
     ports:
-     - "127.0.0.1:64296:5601"
+     - "64296:5601"
     image: ${TPOT_REPO}/kibana:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
 
@@ -707,7 +707,7 @@ services:
      - TPOT_HIVE_USER=${TPOT_HIVE_USER}
      - TPOT_HIVE_IP=${TPOT_HIVE_IP}
     ports:
-     - "127.0.0.1:64305:64305"
+     - "64305:64305"
     mem_limit: 2g
     image: ${TPOT_REPO}/logstash:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
@@ -739,7 +739,7 @@ services:
     stop_signal: SIGKILL
     tty: true
     ports:
-     - "127.0.0.1:64299:64299"
+     - "64299:64299"
     image: ${TPOT_REPO}/map:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
 
@@ -824,7 +824,7 @@ services:
     networks:
      - spiderfoot_local
     ports:
-     - "127.0.0.1:64303:8080"
+     - "64303:8080"
     image: ${TPOT_REPO}/spiderfoot:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
     volumes:
