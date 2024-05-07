@@ -464,7 +464,7 @@ services:
     networks:
      - redishoneypot_local
     ports:
-     - "6379:6379"
+     - "16379:6379"
     image: ${TPOT_REPO}/redishoneypot:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
     read_only: true
