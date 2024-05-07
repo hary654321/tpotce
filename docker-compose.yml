@@ -346,7 +346,6 @@ services:
 
 # Endlessh service
   endlessh:
-    build: .
     container_name: endlessh
     restart: always
 #    cpu_count: 1
