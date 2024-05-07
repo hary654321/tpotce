@@ -229,8 +229,8 @@ services:
     networks:
       - cowrie_local
     ports:
-      - "22:22"
-      - "23:23"
+      - "122:22"
+      - "123:23"
     image: ${TPOT_REPO}/cowrie:${TPOT_VERSION} 
     pull_policy: ${TPOT_PULL_POLICY}
     read_only: true
