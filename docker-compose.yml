@@ -584,7 +584,7 @@ services:
     networks:
      - wordpot_local
     ports:
-     - "8080:80"
+     - "18080:80"
     image: ${TPOT_REPO}/wordpot:${TPOT_VERSION}
     read_only: true
     volumes:
