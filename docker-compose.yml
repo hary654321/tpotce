@@ -24,6 +24,7 @@ networks:
   spiderfoot_local:
   wordpot_local:
   ewsposter_local:
+  endlessh_local:
 
 services:
 
@@ -341,6 +342,23 @@ services:
     read_only: true
     volumes:
      - ${TPOT_DATA_PATH}/elasticpot/log:/opt/elasticpot/log
+
+
+# Endlessh service
+  endlessh:
+    build: .
+    container_name: endlessh
+    restart: always
+#    cpu_count: 1
+#    cpus: 0.25
+    networks:
+     - endlessh_local
+    ports:
+     - "322:2222"
+    image: ${TPOT_REPO}/endlessh:${TPOT_VERSION}
+    read_only: true
+    volumes:
+     - ${TPOT_DATA_PATH}/endlessh/log:/var/log/endlessh
 
 # Heralding service
   heralding:
