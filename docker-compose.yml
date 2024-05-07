@@ -368,7 +368,7 @@ services:
     # - "3306:3306"
     # - "3389:3389"
      - "1080:1080"
-     - "5432:5432"
+     - "15432:5432"
      - "5900:5900"
     image: ${TPOT_REPO}/heralding:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
