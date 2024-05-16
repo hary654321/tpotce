@@ -25,6 +25,7 @@ networks:
   wordpot_local:
   ewsposter_local:
   endlessh_local:
+  log4pot_local:
 
 services:
 
