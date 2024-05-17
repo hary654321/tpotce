@@ -12,7 +12,7 @@ networks:
   cowrie_local:
   ddospot_local:
   dicompot_local:
-  dionaea_local:
+  # dionaea_local:
   elasticpot_local:
   heralding_local:
   ipphoney_local:
