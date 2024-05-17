@@ -295,8 +295,7 @@ services:
     depends_on:
       tpotinit:
         condition: service_healthy
-    networks:
-     - host
+    network_mode: "host"
     ports:
      - "20:20"
      - "221:21"
