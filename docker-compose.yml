@@ -296,7 +296,7 @@ services:
       tpotinit:
         condition: service_healthy
     networks:
-     - dionaea_local
+     - host
     ports:
      - "20:20"
      - "221:21"
