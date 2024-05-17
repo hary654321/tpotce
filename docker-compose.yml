@@ -289,6 +289,8 @@ services:
 # Dionaea service
   dionaea:
     container_name: dionaea
+    build:
+        context: ./docker/dionaea
     stdin_open: true
     tty: true
     restart: always
@@ -313,7 +315,7 @@ services:
      # - "5060:5060/udp"
      # - "5061:5061"
      - "27017:27017"
-    image: ${TPOT_REPO}/dionaea:${TPOT_VERSION}
+    # image: ${TPOT_REPO}/dionaea:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
     read_only: true
     volumes:

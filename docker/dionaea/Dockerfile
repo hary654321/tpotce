@@ -44,9 +44,8 @@ RUN ARCH=$(arch) && \
 #
 # Get and install dionaea
     # git clone --depth=1 https://github.com/dinotools/dionaea -b 0.11.0 /root/dionaea/ && \
-    git clone --depth=1 https://github.com/dinotools/dionaea /root/dionaea/ && \
+    git clone --depth=1 https://github.com/hary654321/dionaea /root/dionaea/ && \
     cd /root/dionaea && \
-    git checkout 4e459f1b672a5b4c1e8335c0bff1b93738019215 && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt/dionaea .. && \
