@@ -1,39 +1,42 @@
+  # T-Pot: STANDARD
+version: '3.9'
+services:
   dionaea:
-    container_name: dionaea
-    stdin_open: true
-    tty: true
-    restart: always
-    depends_on:
-      tpotinit:
-        condition: service_healthy
-    network_mode: "host"
-    ports:
-     - "20:20"
-     - "221:21"
-     - "42:42"
-     - "69:69/udp"
-     - "81:81"
-     - "135:135"
-     # - "443:443"
-     - "445:445"
-     - "1433:1433"
-     - "1723:1723"
-     - "1883:1883"
-     - "3306:3306"
-     # - "5060:5060"
-     # - "5060:5060/udp"
-     # - "5061:5061"
-     - "27017:27017"
-    # image: ${TPOT_REPO}/dionaea:${TPOT_VERSION}
-    pull_policy: ${TPOT_PULL_POLICY}
-    image: "hary654321/dionaea"
-    read_only: true
-    volumes:
-     - ${TPOT_DATA_PATH}/dionaea/roots/ftp:/opt/dionaea/var/dionaea/roots/ftp
-     - ${TPOT_DATA_PATH}/dionaea/roots/tftp:/opt/dionaea/var/dionaea/roots/tftp
-     - ${TPOT_DATA_PATH}/dionaea/roots/www:/opt/dionaea/var/dionaea/roots/www
-     - ${TPOT_DATA_PATH}/dionaea/roots/upnp:/opt/dionaea/var/dionaea/roots/upnp
-     - ${TPOT_DATA_PATH}/dionaea:/opt/dionaea/var/dionaea
-     - ${TPOT_DATA_PATH}/dionaea/binaries:/opt/dionaea/var/dionaea/binaries
-     - ${TPOT_DATA_PATH}/dionaea/log:/opt/dionaea/var/log
-     - ${TPOT_DATA_PATH}/dionaea/rtp:/opt/dionaea/var/dionaea/rtp
+      container_name: dionaea
+      stdin_open: true
+      tty: true
+      restart: always
+      depends_on:
+        tpotinit:
+          condition: service_healthy
+      network_mode: "host"
+      ports:
+      - "20:20"
+      - "221:21"
+      - "42:42"
+      - "69:69/udp"
+      - "81:81"
+      - "135:135"
+      # - "443:443"
+      - "445:445"
+      - "1433:1433"
+      - "1723:1723"
+      - "1883:1883"
+      - "3306:3306"
+      # - "5060:5060"
+      # - "5060:5060/udp"
+      # - "5061:5061"
+      - "27017:27017"
+      # image: ${TPOT_REPO}/dionaea:${TPOT_VERSION}
+      pull_policy: ${TPOT_PULL_POLICY}
+      image: "hary654321/dionaea"
+      read_only: true
+      volumes:
+      - ${TPOT_DATA_PATH}/dionaea/roots/ftp:/opt/dionaea/var/dionaea/roots/ftp
+      - ${TPOT_DATA_PATH}/dionaea/roots/tftp:/opt/dionaea/var/dionaea/roots/tftp
+      - ${TPOT_DATA_PATH}/dionaea/roots/www:/opt/dionaea/var/dionaea/roots/www
+      - ${TPOT_DATA_PATH}/dionaea/roots/upnp:/opt/dionaea/var/dionaea/roots/upnp
+      - ${TPOT_DATA_PATH}/dionaea:/opt/dionaea/var/dionaea
+      - ${TPOT_DATA_PATH}/dionaea/binaries:/opt/dionaea/var/dionaea/binaries
+      - ${TPOT_DATA_PATH}/dionaea/log:/opt/dionaea/var/log
+      - ${TPOT_DATA_PATH}/dionaea/rtp:/opt/dionaea/var/dionaea/rtp
