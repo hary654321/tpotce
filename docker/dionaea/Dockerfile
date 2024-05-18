@@ -50,7 +50,7 @@ RUN    git clone --depth=1 https://github.com/hary654321/dionaea /root/dionaea/ 
     cd build && \
     cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt/dionaea .. && \
     make && \
-    make install 
+    make install && pwd
 #
 # Setup user and groups
 RUN    addgroup --gid 2000 dionaea && \
