@@ -6,9 +6,6 @@ services:
       stdin_open: true
       tty: true
       restart: always
-      depends_on:
-        tpotinit:
-          condition: service_healthy
       network_mode: "host"
       ports:
       - "20:20"
