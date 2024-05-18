@@ -108,7 +108,7 @@ RUN ARCH=$(arch) && \
 #
     apt-get autoremove --purge -y && \
     apt-get clean && \
-    rm -rf /root/* /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.cache /opt/dionaea/.git
+    # rm -rf /root/* /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.cache /opt/dionaea/.git
 #
 # Start dionaea
 STOPSIGNAL SIGINT
