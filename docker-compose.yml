@@ -289,8 +289,6 @@ services:
 # Dionaea service
   dionaea:
     container_name: dionaea
-    build:
-        context: ./docker/dionaea
     stdin_open: true
     tty: true
     restart: always
@@ -317,6 +315,7 @@ services:
      - "27017:27017"
     # image: ${TPOT_REPO}/dionaea:${TPOT_VERSION}
     pull_policy: ${TPOT_PULL_POLICY}
+    image: "hary654321/dionaea"
     read_only: true
     volumes:
      - ${TPOT_DATA_PATH}/dionaea/roots/ftp:/opt/dionaea/var/dionaea/roots/ftp

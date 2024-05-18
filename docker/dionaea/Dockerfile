@@ -127,7 +127,7 @@ HEALTHCHECK --interval=5m --timeout=30s --retries=3 CMD python3 /cpu_check.py $(
 # RUN chown -R 777 /opt/dionaea/var
 # RUN chown -R dionaea:dionaea /opt/dionaea/var 
 USER dionaea:dionaea
-CMD ["tail","-f"]
-# CMD ["/opt/dionaea/bin/dionaea", "-u", "dionaea", "-g", "dionaea", "-c", "/opt/dionaea/etc/dionaea/dionaea.cfg"]
+# CMD ["tail","-f"]
+CMD ["/opt/dionaea/bin/dionaea", "-u", "dionaea", "-g", "dionaea", "-c", "/opt/dionaea/etc/dionaea/dionaea.cfg"]
 
 # /opt/dionaea/bin/dionaea -u dionaea -g dionaea -c /opt/dionaea/etc/dionaea/dionaea.cfg
