@@ -114,7 +114,7 @@ RUN  chown -R dionaea:dionaea /opt/dionaea/var && \
 STOPSIGNAL SIGINT
 #
 # Dionaea sometimes hangs at 100% CPU usage, if detected container will become unhealthy and restarted by tpotinit
-HEALTHCHECK --interval=5m --timeout=30s --retries=3 CMD python3 /cpu_check.py $(pgrep -of dionaea) 99
+# HEALTHCHECK --interval=5m --timeout=30s --retries=3 CMD python3 /cpu_check.py $(pgrep -of dionaea) 99
     #  - $PWD/data/dionaea/roots/ftp:/opt/dionaea/var/dionaea/roots/ftp
     #  - $PWD/data/dionaea/roots/tftp:/opt/dionaea/var/dionaea/roots/tftp
     #  - $PWD/data/dionaea/roots/www:/opt/dionaea/var/dionaea/roots/www
@@ -126,7 +126,7 @@ HEALTHCHECK --interval=5m --timeout=30s --retries=3 CMD python3 /cpu_check.py $(
 # RUN mkdir -p /opt/dionaea/var/dionaea/binaries
 # RUN chown -R 777 /opt/dionaea/var
 # RUN chown -R dionaea:dionaea /opt/dionaea/var 
-USER dionaea:dionaea
+USER root:root
 # CMD ["tail","-f"]
 CMD ["/opt/dionaea/bin/dionaea", "-u", "dionaea", "-g", "dionaea", "-c", "/opt/dionaea/etc/dionaea/dionaea.cfg"]
 
