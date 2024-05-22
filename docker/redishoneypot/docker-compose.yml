@@ -13,4 +13,4 @@ services:
     image: "dtagdevsec/redishoneypot:24.04"
     read_only: true
     volumes:
-     - $HOME/tpotce/data/redishoneypot/log:/var/log/redishoneypot
+     - $PWD/data/redishoneypot/log:/var/log/redishoneypot
