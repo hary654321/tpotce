@@ -29,10 +29,9 @@ RUN apk -U --no-cache add \
 		python3 \
 		python3-dev && \
     mkdir -p /opt && \
-    cd /opt/ && \
-    git clone https://gitlab.com/bontchev/elasticpot.git/ && \
+    cd /opt/ 
+RUN git clone https://github.com/hary654321/elasticpot/ && \
     cd elasticpot && \
-    git checkout d12649730d819bd78ea622361b6c65120173ad45 && \
     cp /root/dist/requirements.txt . && \
     pip3 install --break-system-packages -r requirements.txt && \
 #

@@ -1,21 +1,15 @@
 version: '2.3'
 
-networks:
-  redishoneypot_local:
-
 services:
 
 # redishoneypot service
   redishoneypot:
-    build: .
+    # build: .
     container_name: redishoneypot
     restart: always
 #    cpu_count: 1
 #    cpus: 0.25
-    networks:
-     - redishoneypot_local
-    ports:
-     - "6379:6379"    
+    network_mode: "host"
     image: "dtagdevsec/redishoneypot:24.04"
     read_only: true
     volumes:
