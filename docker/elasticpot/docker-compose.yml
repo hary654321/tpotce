@@ -13,7 +13,7 @@ services:
     network_mode: "host"
     ports:
      - "9200:9200"
-    image: "dtagdevsec/elasticpot:24.04"
+    image: "hary654321/elasticpot"
     read_only: true
     volumes:
      - $PWD/data/elasticpot/log:/opt/elasticpot/log

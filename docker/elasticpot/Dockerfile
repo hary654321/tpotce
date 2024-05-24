@@ -30,18 +30,21 @@ RUN apk -U --no-cache add \
 		python3-dev && \
     mkdir -p /opt && \
     cd /opt/ 
-RUN git clone https://github.com/hary654321/elasticpot/ && \
-    cd elasticpot && \
+COPY elasticpot/ /opt/elasticpot
+
+COPY dist1/ /root/dist/
+
+RUN  cd /opt/elasticpot && \
     cp /root/dist/requirements.txt . && \
     pip3 install --break-system-packages -r requirements.txt && \
 #
 # Setup user, groups and configs
     addgroup -g 2000 elasticpot && \
     adduser -S -H -s /bin/ash -u 2000 -D -g 2000 elasticpot && \
-    mv /root/dist/honeypot.cfg /opt/elasticpot/etc/ && \
+    mv /root/dist/honeypot.cfg /opt/elasticpot/etc/ 
 #
 # Clean up
-    apk del --purge build-base \
+ RUN    apk del --purge build-base \
 		git \
 		libffi-dev \
 		openssl-dev \
