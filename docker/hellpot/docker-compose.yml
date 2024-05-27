@@ -7,7 +7,7 @@ services:
 
 # hellpot service
   hellpot:
-    build: .
+    # build: .
     container_name: hellpot
     restart: always
 #    cpu_count: 1
@@ -19,4 +19,4 @@ services:
     image: "dtagdevsec/hellpot:24.04"
     read_only: true
     volumes:
-     - $HOME/tpotce/data/hellpot/log:/var/log/hellpot
+     - $PWD/data/hellpot/log:/var/log/hellpot
