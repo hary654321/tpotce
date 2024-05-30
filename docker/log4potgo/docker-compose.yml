@@ -13,4 +13,4 @@ services:
     image: "hary654321/log4potgo"
     read_only: true
     volumes:
-     - $PWD/data/log4potgo/log:/var/log/log4potgo/log
+     - $PWD/data/log4potgo:/var/log/log4potgo
