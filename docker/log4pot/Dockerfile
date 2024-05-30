@@ -63,4 +63,4 @@ RUN  cd /opt/Log4Pot && git stash && git pull
 
 RUN chmod +w /var/log/log4pot
 WORKDIR /opt/Log4Pot/
-CMD ["/usr/bin/python3","log4pot-server.py","--port","8080","--log","/var/log/log4pot/log/log4pot.json","--payloader","--download-dir","/var/log/log4pot/payloads/","--download-timeout","15","--response","/opt/Log4Pot/responses/sap-netweaver.html"]
+CMD ["/usr/bin/python3","log4pot-server.py","--port","8080","--log","/var/log/log4pot/log/log4pot.json","--payloader","--download-dir","/var/log/log4pot/payloads/","--download-timeout","15","--response","/opt/Log4Pot/responses/tomcat-default.html"]
