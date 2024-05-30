@@ -35,6 +35,9 @@ RUN apt-get update -y && \
 
  RUN    cd /opt/Log4Pot  && poetry install && \
 	setcap cap_net_bind_service=+ep $(readlink -f $(which python3)) 
+
+
+RUN  cd /opt/Log4Pot && git stash && git pull
 #
 # Setup user, groups and configs
 # RUN	addgroup --gid 2000 log4pot && \
