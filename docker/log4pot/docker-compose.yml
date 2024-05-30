@@ -24,5 +24,5 @@ services:
     image: "hary654321/log4pot"
     read_only: true
     volumes:
-     - $PWD/data/log4pot/log:/var/log/log4pot/log
-     - $PWD/data/log4pot/payloads:/var/log/log4pot/payloads
+     - $PWD/data/log4pot/log:/var/log/log4pot/log:rw
+     - $PWD/data/log4pot/payloads:/var/log/log4pot/payloads:rw
